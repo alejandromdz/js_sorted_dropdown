@@ -12,7 +12,8 @@ li.addEventListener('click', function (ev) {
 
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
-    model.push(itemInput.value);
+    const value=itemInput.value;
+    if (value&&model.indexOf(value)===-1) model.push(value);
     itemInput.value = '';
     model.sort((a, b) => { if (a > b) return 1; else return -1; })
     ul.innerHTML = model.reduce((prev, curr) => prev+`<li>${curr}</li>`,'');
